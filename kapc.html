@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0d1457;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color:rgb(106, 100, 189);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(77, 28, 117, 0.678);
+            width: 320px;
+        }
+        h1 {
+            text-align: center;
+            color: #f0ecec;
+            margin-bottom: 25px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #c2cea1;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #8b8080;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        #acessar-btn {
+            display: none;
+        }
+        .success-message {
+            color: green;
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <div class="input-group">
+            <label for="user-id">ID do Usuário:</label>
+            <input type="text" id="user-id" placeholder="Digite seu ID">
+            <div id="id-error" class="error-message">ID incorreto</div>
+        </div>
+        <div class="input-group">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" placeholder="Digite sua senha">
+            <div id="password-error" class="error-message">Senha incorreta</div>
+        </div>
+        <button id="verificar-btn" onclick="verificarCredenciais()">Verificar</button>
+        <button id="acessar-btn" onclick="acessarSistema()">Acessar</button>
+        <div id="success-message" class="success-message">Credenciais corretas! Clique em Acessar para continuar.</div>
+    </div>
+
+    <script>
+        function verificarCredenciais() {
+            const userId = document.getElementById('user-id').value;
+            const password = document.getElementById('password').value;
+            const idError = document.getElementById('id-error');
+            const passwordError = document.getElementById('password-error');
+            const acessarBtn = document.getElementById('acessar-btn');
+            const successMessage = document.getElementById('success-message');
+            
+            // Resetar mensagens de erro
+            idError.style.display = 'none';
+            passwordError.style.display = 'none';
+            
+            let credenciaisCorretas = true;
+            
+            // Verificar ID
+            if (userId !== '112233') {
+                idError.style.display = 'block';
+                credenciaisCorretas = false;
+            }
+            
+            // Verificar senha
+            if (password !== 'ferro') {
+                passwordError.style.display = 'block';
+                credenciaisCorretas = false;
+            }
+            
+            // Se ambas as credenciais estiverem corretas, mostrar botão de acesso
+            if (credenciaisCorretas) {
+                acessarBtn.style.display = 'block';
+                successMessage.style.display = 'block';
+            } else {
+                acessarBtn.style.display = 'none';
+                successMessage.style.display = 'none';
+            }
+        }
+        
+       function acessarSistema() {
+        window.location.href = "https://splendorous-fenglisu-a17882.netlify.app/"; // Abre na mesma aba
+    }
+ 
+</script>
+    </script>
+</body>
+</html>
